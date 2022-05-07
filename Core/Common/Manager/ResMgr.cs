@@ -40,7 +40,7 @@ namespace CatFM
 
         public void LoadAsync<T>(string prefPath, Action<T> callback) where T : UnityEngine.Object
         {
-            MonoListener.Instance.StartCoroutine(IE_AsyncInstantiate<T>(prefPath, callback));
+            GameLoop.Instance.StartCoroutine(IE_AsyncInstantiate<T>(prefPath, callback));
         }
 
         private IEnumerator IE_AsyncInstantiate<T>(string prefPath, Action<T> callback) where T : UnityEngine.Object

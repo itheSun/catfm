@@ -20,7 +20,17 @@ public class ISceneState
 
     }
 
+    public virtual void StateBegin()
+    {
+
+    }
+
     public virtual void StateUpdate()
+    {
+
+    }
+
+    public virtual void StateEnd()
     {
 
     }

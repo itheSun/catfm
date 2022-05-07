@@ -37,7 +37,7 @@ namespace CatFM
         /// <returns></returns>
         public TimerTask New(TimerTask timerTask)
         {
-            taskMap[timerTask] = MonoController.StartCoroutine(Timing(timerTask));
+            taskMap[timerTask] = GameLoop.StartCoroutine(Timing(timerTask));
             return timerTask;
         }
 
@@ -49,7 +49,7 @@ namespace CatFM
         /// <returns></returns>
         public TimerTask New(float delayTime, TimerTask timerTask)
         {
-            MonoController.StartCoroutine(ReadyToTiming(delayTime, timerTask));
+            GameLoop.StartCoroutine(ReadyToTiming(delayTime, timerTask));
             return timerTask;
         }
 
@@ -62,7 +62,7 @@ namespace CatFM
         IEnumerator ReadyToTiming(float delayTime, TimerTask timerTask)
         {
             yield return new WaitForSeconds(delayTime);
-            taskMap[timerTask] = MonoController.StartCoroutine(Timing(timerTask));
+            taskMap[timerTask] = GameLoop.StartCoroutine(Timing(timerTask));
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace CatFM
             if (timerTask == null) return;
             if (taskMap.ContainsKey(timerTask))
             {
-                MonoController.StopCoroutine(taskMap[timerTask]);
+                GameLoop.StopCoroutine(taskMap[timerTask]);
                 taskMap.Remove(timerTask);
             }
         }
@@ -118,7 +118,7 @@ namespace CatFM
         {
             foreach (var task in taskMap)
             {
-                MonoController.StopCoroutine(task.Value);
+                GameLoop.StopCoroutine(task.Value);
                 taskMap.Remove(task.Key);
             }
         }

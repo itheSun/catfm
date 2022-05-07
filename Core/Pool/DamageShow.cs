@@ -39,7 +39,7 @@ public class DamageShow : DntdMonoSingleton<DamageShow>
 
         Rigidbody2D rig2D = txtGo.GetComponent<Rigidbody2D>();
         rig2D.AddForce(Vector2.up * throwMulti, ForceMode2D.Force);
-        MonoController.StartCoroutine(ShowAnim(txtGo, time));
+        CatFM.GameLoop.StartCoroutine(ShowAnim(txtGo, time));
     }
 
     float tempTime = 0;

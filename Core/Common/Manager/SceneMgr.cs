@@ -26,7 +26,7 @@ namespace CatFM
             }
             SceneMgr.last = last;
             SceneMgr.next = next;
-            MonoController.StartCoroutine(AsyncLoading());
+            GameLoop.StartCoroutine(AsyncLoading());
         }
 
         private float toProgress = 0;

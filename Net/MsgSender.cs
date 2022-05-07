@@ -25,12 +25,12 @@ namespace CatFM.Net
 
         public MsgSender()
         {
-            MonoController.AddUpdateListener(OnUpdate);
+            GameLoop.AddUpdateListener(OnUpdate);
         }
 
         ~MsgSender()
         {
-            MonoController.RemoveUpdateListener(OnUpdate);
+            GameLoop.RemoveUpdateListener(OnUpdate);
         }
 
         private void OnUpdate()

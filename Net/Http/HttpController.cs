@@ -20,19 +20,19 @@ public class HttpController : Singleton<HttpController>
     public void UnityGet(string url, Action<string> successCallback, Action failedCallback)
     {
         UnityWebRequest request = new UnityWebRequest(url, "GET");
-        MonoController.StartCoroutine(UnityRequest(request, successCallback, failedCallback));
+        CatFM.GameLoop.StartCoroutine(UnityRequest(request, successCallback, failedCallback));
     }
 
     public void UnityPost(string url, Action<string> successCallback, Action failedCallback, byte[] data)
     {
         UnityWebRequest request = new UnityWebRequest(url, "POST");
-        MonoController.StartCoroutine(UnityRequest(request, successCallback, failedCallback, data));
+        CatFM.GameLoop.StartCoroutine(UnityRequest(request, successCallback, failedCallback, data));
     }
 
     public void DownloadFile(string url, byte[] fileName, Action<string, byte[]> successCallback, Action failedCallback)
     {
         UnityWebRequest request = new UnityWebRequest(url, "POST");
-        MonoController.StartCoroutine(Downloading(request, fileName, successCallback, failedCallback));
+        CatFM.GameLoop.StartCoroutine(Downloading(request, fileName, successCallback, failedCallback));
     }
 
     IEnumerator Downloading(UnityWebRequest request, byte[] data, Action<string, byte[]> successCallback, Action failedCallback)
@@ -74,7 +74,7 @@ public class HttpController : Singleton<HttpController>
     [Obsolete]
     public void UnityWWW(string url, Action<byte[]> callback)
     {
-        MonoController.StartCoroutine(WWWRequest(url, (data) => callback.Invoke(data)));
+        CatFM.GameLoop.StartCoroutine(WWWRequest(url, (data) => callback.Invoke(data)));
     }
 
     [Obsolete]
